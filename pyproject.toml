@@ -1,0 +1,52 @@
+[project]
+name = "meet-control"
+version = "0.1.0"
+description = "Floating top-strip meeting/call pacing timer with stage countdown and color signalling."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Roman Voronov", email = "roman.voronov.python.developer@gmail.com" },
+]
+keywords = ["meeting", "timer", "countdown", "presentation", "pacing", "overlay", "pyside6"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: X11 Applications :: Qt",
+    "Environment :: Win32 (MS Windows)",
+    "Intended Audience :: End Users/Desktop",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Office/Business",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "PySide6>=6.6",
+    "pynput>=1.7",
+]
+
+[project.optional-dependencies]
+build = ["pyinstaller>=6.3"]
+dev = ["ruff>=0.6"]
+
+[project.scripts]
+meet-control = "meet_control.__main__:main"
+
+[tool.ruff]
+line-length = 100
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "B", "UP"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/meet_control"]

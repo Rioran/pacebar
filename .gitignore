@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+
+# uv
+.uv/
+
+# PyInstaller build output (meet-control.spec IS tracked — it is our build config)
+build/
+dist/
+
+# Tooling caches
+.ruff_cache/
+
+# IDEs
+.idea/
+.vscode/
+
+# Claude Code (local config / session state)
+.claude/
+
+# App runtime state (written next to the app on each Start)
+tc_last_run.json
+
+# OS
+.DS_Store
+Thumbs.db
