@@ -24,7 +24,7 @@ _SECONDS_PER_HOUR = 3600
 _TIMER_WIDTH_PADDING = 6
 _NAME_WIDTH_PADDING = 6
 _NEXT_WIDTH_PADDING = 10
-_SQUARE_HOME_OFFSET = 20
+_SQUARE_TOP_MARGIN = 10
 
 
 class RunController(QObject):
@@ -99,9 +99,8 @@ class RunController(QObject):
         geometry = screen.availableGeometry()
         left = geometry.x() + (geometry.width() - self.bar.width()) // 2
         self.bar.move(left, geometry.y())
-        self._square_home = QPoint(
-            geometry.x() + _SQUARE_HOME_OFFSET, geometry.y() + _SQUARE_HOME_OFFSET
-        )
+        square_left = geometry.x() + (geometry.width() - self.square.width()) // 2
+        self._square_home = QPoint(square_left, geometry.y() + _SQUARE_TOP_MARGIN)
 
     # --- render ---------------------------------------------------------
 
