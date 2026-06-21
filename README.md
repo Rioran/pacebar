@@ -20,14 +20,14 @@ Written in Python with **PySide6**. Built cross-platform (Windows + Linux);
 
 The setup window — one row per section, plus the start / lateness / reset toolbar:
 
-![Setup window](docs/images/editor.png)
+![Setup window](https://raw.githubusercontent.com/Rioran/pacebar/main/docs/images/editor.png)
 
 The running strip (here ~2 minutes left on the current section, next section as a
 button), and the minimized square that signals status by color alone:
 
-![Running strip](docs/images/strip.png)
+![Running strip](https://raw.githubusercontent.com/Rioran/pacebar/main/docs/images/strip.png)
 
-![Minimized square](docs/images/minimized.png)
+![Minimized square](https://raw.githubusercontent.com/Rioran/pacebar/main/docs/images/minimized.png)
 
 ## Requirements
 
