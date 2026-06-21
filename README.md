@@ -1,13 +1,33 @@
-# Meet Control
+# PaceBar
 
-A small desktop tool that keeps you on time during a call. You enter the sections
-of your meeting and how many minutes each should take; on **Start** a flat,
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)
+![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux-555)
+![License: MIT](https://img.shields.io/badge/License-MIT-green)
+![Made with Claude Code](https://img.shields.io/badge/Made%20with-Claude%20Code-D97757?logo=anthropic&logoColor=white)
+
+A small desktop tool that keeps you on time through any sequence of timed stages —
+a sales call, a talk, a workout, even a recipe. You enter the stages and how many
+minutes each should take; on **Start** a flat,
 always-on-top strip appears across the top of the screen and counts the current
 section down. The strip is **green** while you are on pace, **pastel yellow** when
 the section is almost over, and **pastel red** once you have run over — so you can
 feel the pacing without staring at numbers.
 
-Cross-platform (Windows + Linux), written in Python with **PySide6**.
+Written in Python with **PySide6**. Built cross-platform (Windows + Linux);
+**tested and working on Windows 11**, **not yet tested on Linux** (feedback welcome).
+
+## Screenshots
+
+The setup window — one row per section, plus the start / lateness / reset toolbar:
+
+![Setup window](docs/images/editor.png)
+
+The running strip (here ~2 minutes left on the current section, next section as a
+button), and the minimized square that signals status by color alone:
+
+![Running strip](docs/images/strip.png)
+
+![Minimized square](docs/images/minimized.png)
 
 ## Requirements
 
@@ -17,37 +37,38 @@ Cross-platform (Windows + Linux), written in Python with **PySide6**.
 ## Install
 
 ```bash
-pip install meet-control
-meet-control
+pip install pacebar
+pacebar
 ```
 
-This pulls in PySide6 automatically and adds a `meet-control` command. (Prefer the
+This pulls in PySide6 automatically and adds a `pacebar` command. (Prefer the
 standalone exe if you don't want a Python environment at all — see below.)
 
 ## Run from source
 
 ```bash
 uv sync            # create the venv and install dependencies
-uv run meet-control
+uv run pacebar
 ```
 
-Or just double-click a helper script:
+Or run it in **one click** — double-click the script for your OS:
 
-| Action      | Windows                | Linux / macOS         |
-|-------------|------------------------|-----------------------|
-| Run         | `scripts\run.bat`      | `scripts/run.sh`      |
-| Build exe   | `scripts\build.bat`    | `scripts/build.sh`    |
+- **Windows:** `scripts\run.bat`
+- **Linux / macOS:** `scripts/run.sh`
 
 (`uv sync` runs automatically the first time `uv run` is used.)
 
 ## Build a standalone executable
 
+One click: double-click `scripts\build.bat` (Windows) or `scripts/build.sh`
+(Linux / macOS). Or run it manually:
+
 ```bash
-uv run --extra build pyinstaller --noconfirm --clean meet-control.spec
+uv run --extra build pyinstaller --noconfirm --clean pacebar.spec
 ```
 
-The build is driven by [`meet-control.spec`](meet-control.spec) (a single
-`--windowed --onefile` build). The result lands in `dist/` (`meet-control.exe` on
+The build is driven by [`pacebar.spec`](pacebar.spec) (a single
+`--windowed --onefile` build). The result lands in `dist/` (`pacebar.exe` on
 Windows) — one shareable file; it starts a touch slower because it unpacks to a temp
 dir on launch.
 
@@ -67,11 +88,11 @@ uv run ruff check .    # lint
 
 ```bash
 uv build                          # builds the wheel + sdist into dist/
-uv publish dist/meet_control-*    # upload (needs a PyPI account + API token)
+uv publish dist/pacebar-*    # upload (needs a PyPI account + API token)
 ```
 
-The `meet_control-*` glob is deliberate: it uploads only the wheel and sdist and skips
-`meet-control.exe`, which also lives in `dist/`. Test on TestPyPI first
+The `pacebar-*` glob is deliberate: it uploads only the wheel and sdist and skips
+`pacebar.exe`, which also lives in `dist/`. Test on TestPyPI first
 (`uv publish --publish-url https://test.pypi.org/legacy/ ...`), and make sure the
 project name is still available on PyPI before the first real upload.
 
@@ -122,7 +143,7 @@ left/right (D = forward, A = back):
 ## Saved state
 
 On every Start the schedule (order, minutes, names — no lateness, no thresholds) is
-written to `tc_last_run.json`, and it is loaded back the next time you launch. This
+written to `pacebar_last_run.json`, and it is loaded back the next time you launch. This
 also makes the tool handy for rehearsing a talk.
 
 The file lives **next to the running exe**, so each copy of the app keeps its own

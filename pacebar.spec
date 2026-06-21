@@ -2,12 +2,18 @@
 # Standard one-file build. Entry point is entry.py (absolute imports) rather than
 # the package __main__, which would build but crash at launch when frozen.
 
+from PyInstaller.utils.hooks import collect_submodules
+
+# pynput loads its platform backend dynamically (importlib), so PyInstaller's
+# static analysis misses it. Without these the global hotkeys silently die.
+_HIDDEN_IMPORTS = collect_submodules("pynput")
+
 a = Analysis(
     ['entry.py'],
     pathex=['src'],
     binaries=[],
     datas=[],
-    hiddenimports=[],
+    hiddenimports=_HIDDEN_IMPORTS,
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -23,7 +29,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='meet-control',
+    name='pacebar',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,

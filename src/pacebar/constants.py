@@ -5,8 +5,8 @@ this file holds values that are shared or worth tuning in one place.
 """
 
 # Identity and storage
-APP_DISPLAY_NAME = "Meet Control"
-LAST_RUN_FILENAME = "tc_last_run.json"
+APP_DISPLAY_NAME = "PaceBar"
+LAST_RUN_FILENAME = "pacebar_last_run.json"
 
 # Section / editor limits and defaults
 MIN_SECTION_MINUTES = 1

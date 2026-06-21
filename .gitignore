@@ -7,7 +7,7 @@ __pycache__/
 # uv
 .uv/
 
-# PyInstaller build output (meet-control.spec IS tracked — it is our build config)
+# PyInstaller build output (pacebar.spec IS tracked — it is our build config)
 build/
 dist/
 
@@ -22,7 +22,7 @@ dist/
 .claude/
 
 # App runtime state (written next to the app on each Start)
-tc_last_run.json
+pacebar_last_run.json
 
 # OS
 .DS_Store

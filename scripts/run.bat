@@ -1,4 +1,4 @@
 @echo off
-REM Double-click to run Meet Control from source (Windows).
+REM Double-click to run PaceBar from source (Windows).
 cd /d "%~dp0\.."
-uv run meet-control
+uv run pacebar

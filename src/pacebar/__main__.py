@@ -1,4 +1,4 @@
-"""Entry point: `python -m meet_control` / the `meet-control` script / the exe."""
+"""Entry point: `python -m pacebar` / the `pacebar` script / the exe."""
 
 import sys
 
