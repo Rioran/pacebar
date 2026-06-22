@@ -34,15 +34,40 @@ button), and the minimized square that signals status by color alone:
 - [uv](https://docs.astral.sh/uv/) (manages the virtual environment and dependencies)
 - Python 3.10+ (uv can install it for you)
 
-## Install
+## Install & run
+
+PaceBar is on [PyPI](https://pypi.org/project/pacebar/) — no clone needed. It pulls in
+PySide6 automatically (a ~100 MB download the first time). Pick whichever fits you:
+
+**With [uv](https://docs.astral.sh/uv/) — recommended** (isolated, adds a global `pacebar` command):
 
 ```bash
+uv tool install pacebar
+pacebar
+```
+
+If the `pacebar` command isn't found afterwards, run `uv tool update-shell` once and
+reopen the terminal. Upgrade later with `uv tool upgrade pacebar`.
+
+**Just try it once, without installing:**
+
+```bash
+uvx pacebar
+```
+
+**With plain pip** (into a virtual environment):
+
+```bash
+python -m venv .venv
+# Windows:        .venv\Scripts\activate
+# Linux / macOS:  source .venv/bin/activate
 pip install pacebar
 pacebar
 ```
 
-This pulls in PySide6 automatically and adds a `pacebar` command. (Prefer the
-standalone exe if you don't want a Python environment at all — see below.)
+Runs from any folder; the last schedule is saved to `pacebar_last_run.json` in the
+current working directory. Not a Python user? Grab the standalone executable instead
+(see [Build a standalone executable](#build-a-standalone-executable)).
 
 ## Run from source
 
